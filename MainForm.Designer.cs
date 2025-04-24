@@ -29,6 +29,7 @@
       this.btnBrowseTarget = new System.Windows.Forms.Button();
       this.btnSync = new System.Windows.Forms.Button();
       this.txtLog = new System.Windows.Forms.TextBox();
+      this.chkSourcePriority = new System.Windows.Forms.CheckBox();
       this.SuspendLayout();
       // 
       // textSource
@@ -70,7 +71,7 @@
       // 
       // btnSync
       // 
-      this.btnSync.Location = new System.Drawing.Point(260, 86);
+      this.btnSync.Location = new System.Drawing.Point(259, 152);
       this.btnSync.Name = "btnSync";
       this.btnSync.Size = new System.Drawing.Size(291, 91);
       this.btnSync.TabIndex = 4;
@@ -80,18 +81,34 @@
       // 
       // txtLog
       // 
-      this.txtLog.Location = new System.Drawing.Point(12, 183);
+      this.txtLog.Location = new System.Drawing.Point(12, 249);
       this.txtLog.Multiline = true;
       this.txtLog.Name = "txtLog";
       this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.txtLog.Size = new System.Drawing.Size(776, 255);
+      this.txtLog.Size = new System.Drawing.Size(776, 189);
       this.txtLog.TabIndex = 5;
+      // 
+      // chkSourcePriority
+      // 
+      this.chkSourcePriority.AutoSize = true;
+      this.chkSourcePriority.Checked = true;
+      this.chkSourcePriority.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.chkSourcePriority.Location = new System.Drawing.Point(2, 115);
+      this.chkSourcePriority.Name = "chkSourcePriority";
+      this.chkSourcePriority.Size = new System.Drawing.Size(251, 95);
+      this.chkSourcePriority.TabIndex = 6;
+      this.chkSourcePriority.Text = "Приоритет у первой папки. \r\nЕсли во второй, присутствуют такие файлы,\r\nкоторых не" +
+    "т в первой, \r\nто они удаляются из второй.\r\nВ противном случае приоритет \r\nимеет " +
+    "вторая папка.\r\n\r\n";
+      this.chkSourcePriority.UseVisualStyleBackColor = true;
+      this.chkSourcePriority.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 450);
+      this.Controls.Add(this.chkSourcePriority);
       this.Controls.Add(this.txtLog);
       this.Controls.Add(this.btnSync);
       this.Controls.Add(this.btnBrowseTarget);
@@ -113,6 +130,7 @@
     private System.Windows.Forms.Button btnBrowseTarget;
     private System.Windows.Forms.Button btnSync;
     private System.Windows.Forms.TextBox txtLog;
+    private System.Windows.Forms.CheckBox chkSourcePriority;
   }
 }
 

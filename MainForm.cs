@@ -33,9 +33,13 @@ namespace FolderSyncApp {
     }
 
     private void btnSync_Click(object sender, EventArgs e) {
+      bool isSourcePriority = chkSourcePriority.Checked;
       txtLog.AppendText("Синхронизация начата!" + Environment.NewLine);
-      FileSync.SyncFolders(textSource.Text, textTarget.Text, log => txtLog.AppendText(log + Environment.NewLine));
+      FileSync.SyncFolders(textSource.Text, textTarget.Text, isSourcePriority, log => txtLog.AppendText(log + Environment.NewLine));
       txtLog.AppendText("Синхронизация завершена!" + Environment.NewLine); 
+    }
+
+    private void checkBox1_CheckedChanged(object sender, EventArgs e) { //я снова случайно нажал, и если удалить, то всё ломается :(
     }
   }
 }

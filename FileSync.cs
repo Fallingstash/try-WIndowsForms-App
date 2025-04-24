@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,20 @@ using System.Threading.Tasks;
 namespace FolderSyncApp {
   public class FileSync {
 
-    public static void SyncFolders(string sourceDir, string targetDir, Action<string> logAction) {
+    public static void SyncFolders(string sourceDir, string targetDir, bool isSourcePriority, Action<string> logAction) {
       if (!Directory.Exists(sourceDir) || !Directory.Exists(targetDir)) {
         logAction("Ошибка: одна из папок не существует!");
         return;
       }
 
-      // 1. Копируем новые и изменённые файлы из source в target
       SyncDirectory(sourceDir, targetDir, logAction);
+      SyncDirectory(targetDir, sourceDir, logAction);
 
-      // 2. (Позже добавим обратную синхронизацию)
+      if (isSourcePriority) {
+        DeleteExtraFiles(sourceDir, targetDir, logAction); // Удаляем лишнее в Target
+      } else {
+        DeleteExtraFiles(targetDir, sourceDir, logAction); // Удаляем лишнее в Source
+      }
     }
 
     private static void SyncDirectory(string source, string target, Action<string> logAction) {
@@ -31,6 +36,18 @@ namespace FolderSyncApp {
         } else if (File.GetLastWriteTime(sourceFile) > File.GetLastWriteTime(targetFile)) {
           File.Copy(sourceFile, targetFile, true);
           logAction($"Файл {targetFile} изменен");
+        }
+      }
+    }
+
+    private static void DeleteExtraFiles(string source, string target, Action<string> logAction) {
+      foreach (string targetFile in Directory.GetFiles(target)) {
+        string fileName = Path.GetFileName(target);
+        string sourceFile = Path.Combine(source, fileName);
+
+        if (!File.Exists(sourceFile)) {
+          File.Delete(targetFile);
+          logAction($"Файл {targetFile} удалён из неприоритетной папки"); 
         }
       }
     }
