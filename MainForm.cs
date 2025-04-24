@@ -34,8 +34,8 @@ namespace FolderSyncApp {
 
     private void btnSync_Click(object sender, EventArgs e) {
       txtLog.AppendText("Синхронизация начата!" + Environment.NewLine);
-      FileSync.CopyFiles(textSource.Text, textTarget.Text, msg => txtLog.AppendText(msg + Environment.NewLine));
-      txtLog.AppendText("Синхронизация завершена!" + Environment.NewLine);
+      FileSync.SyncFolders(textSource.Text, textTarget.Text, log => txtLog.AppendText(log + Environment.NewLine));
+      txtLog.AppendText("Синхронизация завершена!" + Environment.NewLine); 
     }
   }
 }
