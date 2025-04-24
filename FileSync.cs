@@ -9,20 +9,24 @@ using System.Threading.Tasks;
 namespace FolderSyncApp {
   public class FileSync {
 
-    public static void SyncFolders(string sourceDir, string targetDir, bool isSourcePriority, Action<string> logAction) {
+    public void SyncFolders(string sourceDir, string targetDir, bool isSourcePriority, Action<string> logAction) {
       if (!Directory.Exists(sourceDir) || !Directory.Exists(targetDir)) {
         logAction("Ошибка: одна из папок не существует!");
         return;
       }
 
-      SyncDirectory(sourceDir, targetDir, logAction);
-      SyncDirectory(targetDir, sourceDir, logAction);
+      logAction("Синхронизация начата...");
+
 
       if (isSourcePriority) {
-        DeleteExtraFiles(sourceDir, targetDir, logAction); // Удаляем лишнее в Target
+        SyncDirectory(sourceDir, targetDir, logAction);
+        DeleteExtraFiles(sourceDir, targetDir, logAction);
       } else {
-        DeleteExtraFiles(targetDir, sourceDir, logAction); // Удаляем лишнее в Source
+        SyncDirectory(targetDir, sourceDir, logAction);
+        DeleteExtraFiles(targetDir, sourceDir, logAction); 
       }
+
+      logAction("Синхронизация завершена!");
     }
 
     private static void SyncDirectory(string source, string target, Action<string> logAction) {
@@ -42,7 +46,7 @@ namespace FolderSyncApp {
 
     private static void DeleteExtraFiles(string source, string target, Action<string> logAction) {
       foreach (string targetFile in Directory.GetFiles(target)) {
-        string fileName = Path.GetFileName(target);
+        string fileName = Path.GetFileName(targetFile);
         string sourceFile = Path.Combine(source, fileName);
 
         if (!File.Exists(sourceFile)) {
