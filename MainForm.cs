@@ -49,4 +49,4 @@ namespace FolderSyncApp {
     private void checkBox1_CheckedChanged(object sender, EventArgs e) { // не смог удалить
     }
   }
-}
+} //всё также не понял как поменять имя методов

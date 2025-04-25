@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace FolderSyncApp {
   public class FileSync {
-
     public void SyncFolders(string sourceDir, string targetDir, bool isSourcePriority, Action<string> logAction) {
       if (!Directory.Exists(sourceDir) || !Directory.Exists(targetDir)) {
         logAction("Ошибка: одна из папок не существует!");
@@ -16,7 +15,6 @@ namespace FolderSyncApp {
       }
 
       logAction("Синхронизация начата...");
-
 
       if (isSourcePriority) {
         SyncDirectory(sourceDir, targetDir, logAction);
