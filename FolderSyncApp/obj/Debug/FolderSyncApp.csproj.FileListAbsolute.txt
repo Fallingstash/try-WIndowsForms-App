@@ -1,0 +1,10 @@
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\bin\Debug\FolderSyncApp.exe.config
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\bin\Debug\FolderSyncApp.exe
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\bin\Debug\FolderSyncApp.pdb
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.csproj.AssemblyReference.cache
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.MainForm.resources
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.Properties.Resources.resources
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.csproj.GenerateResource.cache
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.csproj.CoreCompileInputs.cache
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.exe
+C:\Users\1500n\source\repos\FolderSyncApp\FolderSyncApp\obj\Debug\FolderSyncApp.pdb
